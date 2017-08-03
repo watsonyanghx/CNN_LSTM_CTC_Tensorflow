@@ -36,11 +36,10 @@ There are many other parameters with which you can play with, have a look at [ut
 
 ls -R
   .:
-  imgs  resnet
+  imgs  labels.txt  utils.py  helper.py  main.py  cnn_lstm_otc_ocr.py
 
   ./imgs:
-  train  infer  val  labels.txt  utils.py  helper.py  main.py  cnn_lstm_otc_ocr.py
-
+  train  infer  val
   ./imgs/train:
   1.png  2.png  ...  50000.png
   
