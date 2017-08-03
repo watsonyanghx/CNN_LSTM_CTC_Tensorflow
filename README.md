@@ -30,7 +30,7 @@ There are many other parameters with which you can play with, have a look at [ut
 **Note** that the [num_classes](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/utils.py#L6) is not added to parameters talked above for clarification.
 
 
-''' shell
+``` shell
 # Train the model.
 python ./main.py --train_dir=./imgs/train/ \
                  --val_dir=./imgs/val/ \
@@ -49,17 +49,17 @@ python ./main.py --infer_dir=./imgs/infer/ \
                  --num_gpus=0 \
                  --mode=infer
 
-'''
+```
 
 
 ## Run with your own data.
 
 1. prepare your data so that it is named in format: id_label.jpg
 
-''' shell
+``` shell
 
 python helper.py
-'''
+```
 
 2. Run following [How to run](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/edit/master/README.md#24)
 
