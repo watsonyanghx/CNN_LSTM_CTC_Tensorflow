@@ -9,7 +9,7 @@ I use the code in this repository and get 99.75% accuracy on test dataset(200k i
 
 The image is first processed by a CNN to extract features, then these features is feed into a LSTM.
 
-The CNN is just 'Convolution + Convolution + Max pooling' for simplicity, and the LSTM is a 2 layer stacked LSTM, you can try out Bidirectional LSTM.
+The CNN is just `Convolution + Convolution + Max pooling` for simplicity, and the LSTM is a 2 layers stacked LSTM, you can try out Bidirectional LSTM.
 
 You can play with the network architecture and see what will happen. Have a look at [CNN part](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/cnn_lstm_otc_ocr.py#L32) and [LSTM part](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/cnn_lstm_otc_ocr.py#L57).
 
@@ -32,7 +32,7 @@ There are many other parameters with which you can play with, have a look at [ut
 
 ``` shell
 # cd to the your workspace.
-# The code will evaluate data every validation_steps specified in parameters.
+# The code will evaluate the accuracy every validation_steps specified in parameters.
 
 ls -R
   .:
