@@ -14,7 +14,7 @@ tf.app.flags.DEFINE_float('initial_learning_rate', 1e-3, 'inital lr')
 
 tf.app.flags.DEFINE_integer('image_height', 60, 'image height')
 tf.app.flags.DEFINE_integer('image_width', 180, 'image width')
-tf.app.flags.DEFINE_integer('image_channel', 1, 'image channels')
+tf.app.flags.DEFINE_integer('image_channel', 1, 'image channels as input')
 
 tf.app.flags.DEFINE_integer('max_stepsize', 64, 'max stepsize in lstm, as well as '
                                                 'the output channels of last layer in CNN')
@@ -31,9 +31,13 @@ tf.app.flags.DEFINE_float('beta2', 0.999, 'adam parameter beta2')
 tf.app.flags.DEFINE_integer('decay_steps', 10000, 'the lr decay_step for optimizer')
 tf.app.flags.DEFINE_float('momentum', 0.9, 'the momentum')
 
+tf.app.flags.DEFINE_string('train_dir', './imgs/train/', 'the train data dir')
+tf.app.flags.DEFINE_string('val_dir', './imgs/val/', 'the val data dir')
+tf.app.flags.DEFINE_string('infer_dir', './imgs/infer/', 'the infer data dir')
 tf.app.flags.DEFINE_string('log_dir', './log', 'the logging dir')
 tf.app.flags.DEFINE_string('mode', 'train', 'train, val or infer')
 tf.app.flags.DEFINE_integer('num_gpus', 0, 'num of gpus')
+
 
 FLAGS = tf.app.flags.FLAGS
 

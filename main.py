@@ -203,11 +203,10 @@ def main(_):
 
     with tf.device(dev):
         if FLAGS.mode == 'train':
-            train(train_dir='./imgs/train/',
-                  val_dir='./imgs/val/',
-                  mode='train')
+            train(FLAGS.train_dir, FLAGS.val_dir, FLAGS.mode)
+
         elif FLAGS.mode == 'infer':
-            infer('./imgs/image_contest_level_1_validate/', 'infer')
+            infer(FLAGS.infer_dir, FLAGS.mode)
 
 
 if __name__ == '__main__':
