@@ -1,8 +1,8 @@
 # CNN_LSTM_CTC_Tensorflow
 
-CNN+LSTM+CTC based OCR(Optical Character Recognition) implemented in tensorflow. 
+CNN+LSTM+CTC based OCR(Optical Character Recognition) implemented using tensorflow. 
 
-I use the code in this repository and get 99.75% accuracy on test dataset(200k images) in the [competition](http://meizu.baiducloud.top).
+I trained a model with 100k images using this code and get 99.75% accuracy on test dataset (200k images) in the [competition](http://meizu.baiducloud.top).
 
 
 ## Structure
