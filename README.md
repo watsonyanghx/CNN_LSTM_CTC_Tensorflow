@@ -31,6 +31,26 @@ There are many other parameters with which you can play with, have a look at [ut
 
 
 ``` shell
+# cd to the your workspace.
+# The code will evaluate data every validation_steps specified in parameters.
+
+ls -R
+  .:
+  imgs  resnet
+
+  ./imgs:
+  train  infer  val  labels.txt  utils.py  helper.py  main.py  cnn_lstm_otc_ocr.py
+
+  ./imgs/train:
+  1.png  2.png  ...  50000.png
+  
+  ./imgs/val:
+  1.png  2.png  ...  50000.png
+
+  ./imgs/infer:
+  1.png  2.png  ...  300000.png
+   
+  
 # Train the model.
 python ./main.py --train_dir=./imgs/train/ \
                  --val_dir=./imgs/val/ \
@@ -54,9 +74,10 @@ python ./main.py --infer_dir=./imgs/infer/ \
 
 ## Run with your own data.
 
-1. prepare your data so that it is named in format: id_label.jpg
+1. Prepare your data, make sure that all images are named in format: id_label.jpg
 
 ``` shell
+# make sure labels.txt is in the imgs folder
 
 python helper.py
 ```
