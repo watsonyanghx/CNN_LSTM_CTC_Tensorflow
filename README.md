@@ -36,10 +36,11 @@ There are many other parameters with which you can play with, have a look at [ut
 
 ls -R
   .:
-  imgs  labels.txt  utils.py  helper.py  main.py  cnn_lstm_otc_ocr.py
+  imgs  utils.py  helper.py  main.py  cnn_lstm_otc_ocr.py
 
   ./imgs:
-  train  infer  val
+  train  infer  val  labels.txt
+  
   ./imgs/train:
   1.png  2.png  ...  50000.png
   
@@ -76,7 +77,7 @@ python ./main.py --infer_dir=./imgs/infer/ \
 1. Prepare your data, make sure that all images are named in format: id_label.jpg
 
 ``` shell
-# make sure labels.txt is in the imgs folder
+# make sure the data path is correct, have a look at helper.py.
 
 python helper.py
 ```
