@@ -18,7 +18,7 @@ You can play with the network architecture and see what will happen. Have a look
 
 1. TensorFlow 1.2
 
-2. Opecv3 (Not a must, used to read images.)
+2. Opecv3 (Not a must, used to read images).
 
 3. Numpy
 
@@ -74,7 +74,7 @@ python ./main.py --infer_dir=./imgs/infer/ \
 
 ## Run with your own data.
 
-1. Prepare your data, make sure that all images are named in format: id_label.jpg
+1. Prepare your data, make sure that all images are named in format: `id_label.jpg`
 
 ``` shell
 # make sure the data path is correct, have a look at helper.py.
