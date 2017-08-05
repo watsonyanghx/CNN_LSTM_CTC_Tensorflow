@@ -2,30 +2,30 @@
 
 CNN+LSTM+CTC based OCR(Optical Character Recognition) implemented using tensorflow. 
 
-I trained a model with 100k images using this code and get 99.75% accuracy on test dataset (200k images) in the [competition](http://meizu.baiducloud.top).
+I trained a model with 100k images using this code and got 99.75% accuracy on test dataset (200k images) in the [competition](http://meizu.baiducloud.top).
 
 
 ## Structure
 
-The image is first processed by a CNN to extract features, then these features is feed into a LSTM.
+The image is first processed by a CNN to extract features, then these extracted features is fed into a LSTM for character recognition.
 
-The CNN is just `Convolution + Convolution + Max pooling` for simplicity, and the LSTM is a 2 layers stacked LSTM, you can try out Bidirectional LSTM.
+The architecture of CNN is just `Convolution + Batch Normlization + Leaky Relu + Max Pooling` for simplicity, and the LSTM is a 2 layers stacked LSTM, you can also try out Bidirectional LSTM.
 
-You can play with the network architecture and see what will happen. Have a look at [CNN part](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/cnn_lstm_otc_ocr.py#L32) and [LSTM part](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/cnn_lstm_otc_ocr.py#L57).
+You can play with the network architecture (add dropout to CNN, stacked layers of LSTM etc.) and see what will happen. Have a look at [CNN part](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/cnn_lstm_otc_ocr.py#L32) and [LSTM part](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/cnn_lstm_otc_ocr.py#L57).
 
 
 ## Prerequisite
 
 1. TensorFlow 1.2
 
-2. Opecv3 (Not a must, used to read images).
+2. Opecv3 (Not a must, used to [read images](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/utils.py#L66)).
 
 3. Numpy
 
 
 ## How to run
 
-There are many other parameters with which you can play with, have a look at [utils.py](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/utils.py#L11).
+There are many other parameters with which you can play, have a look at [utils.py](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/utils.py#L11).
 
 **Note** that the [num_classes](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/utils.py#L6) is not added to parameters talked above for clarification.
 
@@ -74,7 +74,7 @@ python ./main.py --infer_dir=./imgs/infer/ \
 
 ## Run with your own data.
 
-1. Prepare your data, make sure that all images are named in format: `id_label.jpg`
+1. Prepare your data, make sure that all images are named in format: `id_label.jpg`, e.g: `004_(1+4)*2.jpg`.
 
 ``` shell
 # make sure the data path is correct, have a look at helper.py.
