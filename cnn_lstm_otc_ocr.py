@@ -148,7 +148,7 @@ class LSTMOCR(object):
 
             con2d_op = tf.nn.conv2d(x, kernel, [1, strides, strides, 1], padding='SAME')
 
-        return tf.nn.relu(tf.nn.bias_add(con2d_op, b))
+        return tf.nn.bias_add(con2d_op, b)
 
     def _batch_norm(self, name, x):
         """Batch normalization."""
