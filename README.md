@@ -2,7 +2,11 @@
 
 CNN+LSTM+CTC based OCR(Optical Character Recognition) implemented using tensorflow. 
 
-I trained a model with 100k images using this code and got 99.75% accuracy on test dataset (200k images) in the [competition](http://meizu.baiducloud.top).
+**Note:** there is **No** restriction on number of character in the image (variable length). Have a look at the image bellow.
+
+I trained a model with 100k images using this code and got 99.75% accuracy on test dataset (200k images) in the [competition](http://meizu.baiducloud.top). The image in both dataset:
+
+[]()
 
 
 ## Structure
