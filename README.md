@@ -6,9 +6,9 @@ CNN+LSTM+CTC based OCR(Optical Character Recognition) implemented using tensorfl
 
 I trained a model with 100k images using this code and got 99.75% accuracy on test dataset (200k images) in the [competition](http://meizu.baiducloud.top). The image in both dataset:
 
-[](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/data/ico1-608634b7cb.png)
+![](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/data/ico1-608634b7cb.png)
 
-[](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/data/ico2-19c9d50d82.png)
+![](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/data/ico2-19c9d50d82.png)
 
 
 ## Structure
