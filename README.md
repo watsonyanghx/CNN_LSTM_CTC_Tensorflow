@@ -2,9 +2,9 @@
 
 CNN+LSTM+CTC based OCR(Optical Character Recognition) implemented using tensorflow. 
 
-**Note:** there is **No** restriction on number of character in the image (variable length). Have a look at the image bellow.
+**Note:** there is **No** restriction on the number of characters in the image (variable length). Have a look at the image bellow.
 
-I trained a model with 100k images using this code and got 99.75% accuracy on test dataset (200k images) in the [competition](http://meizu.baiducloud.top). The image in both dataset:
+I trained a model with 100k images using this code and got 99.75% accuracy on test dataset (200k images) in the [competition](http://meizu.baiducloud.top). The images in both dataset:
 
 ![](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/data/ico1-608634b7cb.png)
 
@@ -13,9 +13,9 @@ I trained a model with 100k images using this code and got 99.75% accuracy on te
 
 ## Structure
 
-The image is first processed by a CNN to extract features, then these extracted features is fed into a LSTM for character recognition.
+The images are first processed by a CNN to extract features, then these extracted features are fed into a LSTM for character recognition.
 
-The architecture of CNN is just `Convolution + Batch Normlization + Leaky Relu + Max Pooling` for simplicity, and the LSTM is a 2 layers stacked LSTM, you can also try out Bidirectional LSTM.
+The architecture of CNN is just `Convolution + Batch Normalization + Leaky Relu + Max Pooling` for simplicity, and the LSTM is a 2 layers stacked LSTM, you can also try out Bidirectional LSTM.
 
 You can play with the network architecture (add dropout to CNN, stacked layers of LSTM etc.) and see what will happen. Have a look at [CNN part](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/cnn_lstm_otc_ocr.py#L32) and [LSTM part](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/cnn_lstm_otc_ocr.py#L57).
 
