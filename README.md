@@ -44,7 +44,7 @@ You can play with the network architecture (add dropout to CNN, stacked layers o
 
 There are many other parameters with which you can play, have a look at [utils.py](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/utils.py#L11).
 
-**Note** that the [num_classes](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/utils.py#L6) is not added to parameters talked above for clarification.
+**Note** that the [num_classes](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/blob/master/utils.py#L11) is not added to parameters talked above for clarification.
 
 
 ``` shell
