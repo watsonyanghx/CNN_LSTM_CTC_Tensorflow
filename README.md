@@ -16,6 +16,11 @@ I trained a model with 100k images using this code and got 99.75% accuracy on te
 The competiton page is not available now, if you want to reproduce this result, please see this [issue](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/issues/2) about dataset， the lable file (a .txt file) is in the same folder with images after extracting .tar.gz file.
 
 
+**Update 2018.4.24**:
+
+Update to tensorflow 1.7 and fix some bugs reported at issue [#8](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/issues/8).
+
+
 ## Structure
 
 The images are first processed by a CNN to extract features, then these extracted features are fed into a LSTM for character recognition.
