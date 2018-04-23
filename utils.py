@@ -1,3 +1,7 @@
+"""
+
+"""
+
 import os
 import numpy as np
 import tensorflow as tf
@@ -16,12 +20,15 @@ tf.app.flags.DEFINE_integer('image_height', 60, 'image height')
 tf.app.flags.DEFINE_integer('image_width', 180, 'image width')
 tf.app.flags.DEFINE_integer('image_channel', 1, 'image channels as input')
 
-tf.app.flags.DEFINE_integer('max_stepsize', 64, 'max stepsize in lstm, as well as '
-                                                'the output channels of last layer in CNN')
+tf.app.flags.DEFINE_integer('cnn_count', 4, 'count of cnn module to extract image features.')
+tf.app.flags.DEFINE_integer('max_stepsize', 64,
+                            'max stepsize in lstm, as well as the output channels of last layer in CNN')
 tf.app.flags.DEFINE_integer('num_hidden', 128, 'number of hidden units in lstm')
+tf.app.flags.DEFINE_float('output_keep_prob', 0.8, 'output_keep_prob in lstm')
 tf.app.flags.DEFINE_integer('num_epochs', 10000, 'maximum epochs')
 tf.app.flags.DEFINE_integer('batch_size', 40, 'the batch_size')
 tf.app.flags.DEFINE_integer('save_steps', 1000, 'the step to save checkpoint')
+tf.app.flags.DEFINE_float('leakiness', 0.01, 'leakiness of lrelu')
 tf.app.flags.DEFINE_integer('validation_steps', 500, 'the step to validation')
 
 tf.app.flags.DEFINE_float('decay_rate', 0.98, 'the lr decay rate')
@@ -37,7 +44,6 @@ tf.app.flags.DEFINE_string('infer_dir', './imgs/infer/', 'the infer data dir')
 tf.app.flags.DEFINE_string('log_dir', './log', 'the logging dir')
 tf.app.flags.DEFINE_string('mode', 'train', 'train, val or infer')
 tf.app.flags.DEFINE_integer('num_gpus', 0, 'num of gpus')
-
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -63,7 +69,7 @@ class DataIterator:
         for root, sub_folder, file_list in os.walk(data_dir):
             for file_path in file_list:
                 image_name = os.path.join(root, file_path)
-                im = cv2.imread(image_name, 0).astype(np.float32)/255.
+                im = cv2.imread(image_name, cv2.IMREAD_GRAYSCALE).astype(np.float32) / 255.
                 # resize to same height, different width will consume time on padding
                 # im = cv2.resize(im, (image_width, image_height))
                 im = np.reshape(im, [FLAGS.image_height, FLAGS.image_width, FLAGS.image_channel])
@@ -162,7 +168,7 @@ def eval_expression(encoded_list):
             continue
 
     with open('./result.txt') as f:
-        for ith in xrange(len(encoded_list)):
+        for ith in range(len(encoded_list)):
             f.write(encoded_list[ith] + ' ' + eval_rs[ith] + '\n')
 
     return eval_rs

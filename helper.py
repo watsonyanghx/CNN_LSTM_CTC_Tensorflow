@@ -26,7 +26,7 @@ def split_train_val(X, y, train_size):
     y_train = y[train_indices]
 
     # split validation data
-    val_indices = [i for i in xrange(total_size) if i not in train_indices]
+    val_indices = [i for i in range(total_size) if i not in train_indices]
     X_val = X[val_indices]
     y_val = y[val_indices]
 
@@ -53,12 +53,12 @@ def load_labels(file):
     labels = list(open(file).readlines())
     labels = [s.strip() for s in labels]
     labels = [s.split() for s in labels]
-    
+
     labels_dict = dict(labels)
-    
+
     labels = np.asarray(labels, dtype=str)
     labels = labels[:, 0]
-    
+
     return labels, labels_dict
 
 
@@ -66,8 +66,8 @@ def load_img_path(images_path):
     tmp = os.listdir(images_path)
     tmp.sort(key=lambda x: int(x.split('.')[0]))
 
-    file_names = [images_path+s for s in tmp]
-    
+    file_names = [images_path + s for s in tmp]
+
     file_names = np.asarray(file_names)
 
     return file_names
@@ -90,14 +90,14 @@ def load_data(file_to_read):
 
 
 def cp_file(imgs_list_para, labels_list_para, dst_para):
-    for i in xrange(imgs_list_para.shape[0]):
+    for i in range(imgs_list_para.shape[0]):
         file_path = imgs_list_para[i]
 
         filename = os.path.basename(file_path)
         fn = filename.split('.')[0]
         ext = filename.split('.')[1]
 
-        dest_filename = dst_para + fn + '_' + labels_list_para[i] + '.' +  ext
+        dest_filename = dst_para + fn + '_' + labels_list_para[i] + '.' + ext
 
         shutil.copyfile(file_path, dest_filename)
 

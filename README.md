@@ -63,22 +63,23 @@ ls -R
    
   
 # Train the model.
-python ./main.py --train_dir=./imgs/train/ \
-                 --val_dir=./imgs/val/ \
-                 --image_height=60 \
-                 --image_width=180 \
-                 --image_channel=1 \
-                 --max_stepsize=64 \
-                 --num_hidden=128 \
-                 --log_dir=./log/train \
-                 --num_gpus=0 \
-                 --mode=train
+CUDA_VISIBLE_DEVICES=0 python ./main.py --train_dir=../imgs/train/ \
+  --val_dir=../imgs/val/ \
+  --image_height=60 \
+  --image_width=180 \
+  --image_channel=1 \
+  --max_stepsize=64 \
+  --num_hidden=128 \
+  --batch_size=128 \
+  --log_dir=./log/train \
+  --num_gpus=1 \
+  --mode=train
 
 # Inference
-python ./main.py --infer_dir=./imgs/infer/ \
-                 --checkpoint_dir=./checkpoint/ \
-                 --num_gpus=0 \
-                 --mode=infer
+CUDA_VISIBLE_DEVICES=0 python ./main.py --infer_dir=./imgs/infer/ \
+  --checkpoint_dir=./checkpoint/ \
+  --num_gpus=0 \
+  --mode=infer
 
 ```
 
