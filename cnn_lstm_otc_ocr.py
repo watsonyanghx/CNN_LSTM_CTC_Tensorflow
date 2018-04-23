@@ -59,6 +59,7 @@ class LSTMOCR(object):
         # LSTM part
         with tf.variable_scope('lstm'):
             x = tf.transpose(x, [0, 2, 1, 3])  # [batch_size, feature_w, feature_h, FLAGS.out_channels]
+            # here treat `feature_w` as max_timestep in lstm.
             x = tf.reshape(x, [FLAGS.batch_size, feature_w, feature_h * FLAGS.out_channels])
             print('lstm input shape: {}'.format(x.get_shape().as_list()))
             self.seq_len = tf.fill([x.get_shape().as_list()[0]], feature_w)
