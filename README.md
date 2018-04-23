@@ -100,5 +100,5 @@ CUDA_VISIBLE_DEVICES=0 python ./main.py --infer_dir=./imgs/infer/ \
 python helper.py
 ```
 
-2. Run following [How to run](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow/edit/master/README.md#24)
+2. Run following [How to run](https://github.com/watsonyanghx/CNN_LSTM_CTC_Tensorflow#how-to-run)
 
