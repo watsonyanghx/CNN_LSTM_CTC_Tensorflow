@@ -69,7 +69,7 @@ CUDA_VISIBLE_DEVICES=0 python ./main.py --train_dir=../imgs/train/ \
   --image_height=60 \
   --image_width=180 \
   --image_channel=1 \
-  --max_stepsize=64 \
+  --out_channels=64 \
   --num_hidden=128 \
   --batch_size=128 \
   --log_dir=./log/train \

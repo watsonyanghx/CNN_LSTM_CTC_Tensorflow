@@ -18,7 +18,7 @@ class LSTMOCR(object):
         # SparseTensor required by ctc_loss op
         self.labels = tf.sparse_placeholder(tf.int32)
         # 1d array of size [batch_size]
-        self.seq_len = tf.placeholder(tf.int32, [None])
+        # self.seq_len = tf.placeholder(tf.int32, [None])
         # l2
         self._extra_train_ops = []
 
@@ -29,7 +29,7 @@ class LSTMOCR(object):
         self.merged_summay = tf.summary.merge_all()
 
     def _build_model(self):
-        filters = [1, 64, 128, 128, FLAGS.max_stepsize]
+        filters = [1, 64, 128, 128, FLAGS.out_channels]
         strides = [1, 2]
 
         feature_h = FLAGS.image_height
@@ -54,15 +54,15 @@ class LSTMOCR(object):
 
                     # print('----x.get_shape().as_list(): {}'.format(x.get_shape().as_list()))
                     _, feature_h, feature_w, _ = x.get_shape().as_list()
-            print('feature_h: {}, feature_w: {}'.format(feature_h, feature_w))
+            print('\nfeature_h: {}, feature_w: {}'.format(feature_h, feature_w))
 
         # LSTM part
         with tf.variable_scope('lstm'):
-            x = tf.reshape(x, [FLAGS.batch_size, -1, filters[4]])  # [batch_size, num_features, max_stepsize]
-            x = tf.transpose(x, [0, 2, 1])  # [batch_size, max_stepsize, num_features]
-            # shp = x.get_shape().as_list()
-            # x.set_shape([FLAGS.batch_size, filters[3], shp[1]])
-            x.set_shape([FLAGS.batch_size, filters[4], feature_h * feature_w])
+            x = tf.transpose(x, [0, 2, 1, 3])  # [batch_size, feature_w, feature_h, FLAGS.out_channels]
+            x = tf.reshape(x, [FLAGS.batch_size, feature_w, feature_h * FLAGS.out_channels])
+            print('lstm input shape: {}'.format(x.get_shape().as_list()))
+            self.seq_len = tf.fill([x.get_shape().as_list()[0]], feature_w)
+            # print('self.seq_len.shape: {}'.format(self.seq_len.shape.as_list()))
 
             # tf.nn.rnn_cell.RNNCell, tf.nn.rnn_cell.GRUCell
             cell = tf.nn.rnn_cell.LSTMCell(FLAGS.num_hidden, state_is_tuple=True)

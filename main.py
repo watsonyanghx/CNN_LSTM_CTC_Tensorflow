@@ -31,7 +31,7 @@ def train(train_dir=None, val_dir=None, mode='train'):
 
     print('loading validation data')
     val_feeder = utils.DataIterator(data_dir=val_dir)
-    print('size: ', val_feeder.size)
+    print('size: {}\n'.format(val_feeder.size))
 
     num_train_samples = train_feeder.size  # 100000
     num_batches_per_epoch = int(num_train_samples / FLAGS.batch_size)  # example: 100000/100
@@ -69,12 +69,11 @@ def train(train_dir=None, val_dir=None, mode='train'):
                 batch_time = time.time()
                 indexs = [shuffle_idx[i % num_train_samples] for i in
                           range(cur_batch * FLAGS.batch_size, (cur_batch + 1) * FLAGS.batch_size)]
-                batch_inputs, batch_seq_len, batch_labels = \
+                batch_inputs, _, batch_labels = \
                     train_feeder.input_index_generate_batch(indexs)
                 # batch_inputs,batch_seq_len,batch_labels=utils.gen_batch(FLAGS.batch_size)
                 feed = {model.inputs: batch_inputs,
-                        model.labels: batch_labels,
-                        model.seq_len: batch_seq_len}
+                        model.labels: batch_labels}
 
                 # if summary is needed
                 # batch_cost,step,train_summary,_ = sess.run([cost,global_step,merged_summay,optimizer],feed)
@@ -103,11 +102,10 @@ def train(train_dir=None, val_dir=None, mode='train'):
                     for j in range(num_batches_per_epoch_val):
                         indexs_val = [shuffle_idx_val[i % num_val_samples] for i in
                                       range(j * FLAGS.batch_size, (j + 1) * FLAGS.batch_size)]
-                        val_inputs, val_seq_len, val_labels = \
+                        val_inputs, _, val_labels = \
                             val_feeder.input_index_generate_batch(indexs_val)
                         val_feed = {model.inputs: val_inputs,
-                                    model.labels: val_labels,
-                                    model.seq_len: val_seq_len}
+                                    model.labels: val_labels}
 
                         dense_decoded, lastbatch_err, lr = \
                             sess.run([model.dense_decoded, model.cost, model.lrn_rate],
@@ -177,8 +175,7 @@ def infer(img_path, mode='infer'):
             seq_len_input = np.asarray(seq_len_input)
             seq_len_input = np.reshape(seq_len_input, [-1])
 
-            feed = {model.inputs: imgs_input,
-                    model.seq_len: seq_len_input}
+            feed = {model.inputs: imgs_input}
             dense_decoded_code = sess.run(model.dense_decoded, feed)
 
             for item in dense_decoded_code:

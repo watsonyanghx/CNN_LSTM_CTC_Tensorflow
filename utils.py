@@ -21,7 +21,7 @@ tf.app.flags.DEFINE_integer('image_width', 180, 'image width')
 tf.app.flags.DEFINE_integer('image_channel', 1, 'image channels as input')
 
 tf.app.flags.DEFINE_integer('cnn_count', 4, 'count of cnn module to extract image features.')
-tf.app.flags.DEFINE_integer('max_stepsize', 64,
+tf.app.flags.DEFINE_integer('out_channels', 64,
                             'max stepsize in lstm, as well as the output channels of last layer in CNN')
 tf.app.flags.DEFINE_integer('num_hidden', 128, 'number of hidden units in lstm')
 tf.app.flags.DEFINE_float('output_keep_prob', 0.8, 'output_keep_prob in lstm')
@@ -101,7 +101,7 @@ class DataIterator:
 
         def get_input_lens(sequences):
             # 64 is the output channels of the last layer of CNN
-            lengths = np.asarray([FLAGS.max_stepsize for _ in sequences], dtype=np.int64)
+            lengths = np.asarray([FLAGS.out_channels for _ in sequences], dtype=np.int64)
 
             return sequences, lengths
 
