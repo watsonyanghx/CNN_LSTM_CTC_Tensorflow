@@ -40,7 +40,6 @@ def train(train_dir=None, val_dir=None, mode='train'):
     num_batches_per_epoch_val = int(num_val_samples / FLAGS.batch_size)  # example: 10000/100
     shuffle_idx_val = np.random.permutation(num_val_samples)
 
-    # with tf.device('/cpu:0'):
     config = tf.ConfigProto(allow_soft_placement=True)
     config.gpu_options.allow_growth = True
     with tf.Session(config=config) as sess:
@@ -76,11 +75,8 @@ def train(train_dir=None, val_dir=None, mode='train'):
                         model.labels: batch_labels}
 
                 # if summary is needed
-                # batch_cost,step,train_summary,_ = sess.run([cost,global_step,merged_summay,optimizer],feed)
-
                 summary_str, batch_cost, step, _ = \
-                    sess.run([model.merged_summay, model.cost, model.global_step,
-                              model.train_op], feed)
+                    sess.run([model.merged_summay, model.cost, model.global_step, model.train_op], feed)
                 # calculate the cost
                 train_cost += batch_cost * FLAGS.batch_size
 
